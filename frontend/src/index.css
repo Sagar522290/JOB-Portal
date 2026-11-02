@@ -1,1 +1,12 @@
 @import "tailwindcss";
+.carousel.carousel-slider .control-dots .dot {
+    background: #000 !important;
+    box-shadow: none !important;
+}
+
+.carousel.carousel-slider .control-dots .dot.selected,
+.carousel.carousel-slider .control-dots .dot:hover,
+.carousel.carousel-slider .control-dots .dot:focus {
+    background: #000 !important;
+    opacity: 1 !important;
+}

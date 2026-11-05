@@ -12,7 +12,7 @@ const isAuthentication = async (req, res, next) => {
         }
         const decode = jwt.verify(token, process.env.SECRET_KEY);
         if (!decode) {
-            res.status(401).json({
+            return res.status(401).json({
                 message: "Invalid token",
                 success: false
             })
@@ -21,7 +21,10 @@ const isAuthentication = async (req, res, next) => {
         next()
     } catch (error) {
         console.log(error);
-
+        return res.status(401).json({
+            message: "Invalid or expired session.",
+            success: false
+        });
     }
 }
 export default isAuthentication;

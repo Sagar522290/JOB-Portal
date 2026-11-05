@@ -4,7 +4,7 @@ import toast from 'react-hot-toast'
 import { Link, useNavigate } from 'react-router-dom'
 import { USER_API_BASE_URL } from '../../utils/constant'
 import { useDispatch, useSelector } from 'react-redux'
-import { setLoading } from '../../redux/authSlice.js'
+import { setLoading, setUser } from '../../redux/authSlice.js'
 
 export const Login = () => {
 
@@ -33,6 +33,7 @@ export const Login = () => {
                 withCredentials: true,
             });
             if (res.data.success) {
+                dispatch(setUser(res.data.user))
                 navigate('/');
                 toast.success(res.data.message, {
                     position: "top-right",
@@ -64,6 +65,8 @@ export const Login = () => {
                         name="email"
                         onChange={ChangeEventhandler}
                         placeholder="john@example.com"
+                        autoComplete="off"
+                        required
                         className="mb-4 w-full rounded-md border border-gray-300 px-4 py-2" />                </div>
                 <div>
                     <label htmlFor="password" className="mb-1 block text-sm font-medium">Password</label>
@@ -73,6 +76,8 @@ export const Login = () => {
                         name="password"
                         onChange={ChangeEventhandler}
                         placeholder="Create a password"
+                        autoComplete="off"
+                        required
                         className="mb-5 w-full rounded-md border border-gray-300 px-4 py-2" />                </div>
                 <fieldset className="mb-5 flex items-center gap-4" aria-label="Account type">
                     <div className="flex items-center">

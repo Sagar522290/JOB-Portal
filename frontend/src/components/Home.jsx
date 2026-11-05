@@ -4,16 +4,19 @@ import { HeroSection } from './HeroSection'
 import CategoriesSection from './CategoriesSection'
 import Footer from './Footer'
 import LatestJobs from './LatestJobs'
+import useGetAllJobs from '../hooks/useGetAllJobs'
 
 
 export const Home = () => {
+
+  useGetAllJobs()
+
   return (
     <>
     <Navbar/>
     <HeroSection/>
     <CategoriesSection/>
     <LatestJobs/>
-    {/* <AboutSection/> */}
     <Footer/>
     </>
   )
